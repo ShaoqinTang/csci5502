@@ -63,19 +63,42 @@ def Median(data):
 
 def StandardDeviation(data, mean):
     '''
-
+    Computes the standard deviation of the data with the
+    mean of that data
 
     Source: https://en.wikipedia.org/wiki/Standard_deviation
     '''
     deviations = []
     for x in data:
         x = (x - mean)**2
-        print x
         deviations.append(x)
     variance = sum(deviations)/len(deviations)
     return math.sqrt(variance)
 
 
+def Q1(data, median):
+    '''
+    Find the 25th percentile of the data
+
+    Source: https://en.wikipedia.org/wiki/Quartile
+        - Using method 1
+    '''
+    data.sort()
+    lowerHalf = [x for x in data if x < median]
+    q1 = Median(lowerHalf)
+    return q1
+
+def Q3(data, median):
+    '''
+    Find the 75th percentile of the data
+
+    Source: https://en.wikipedia.org/wiki/Quartile
+        - Using method 1
+    '''
+    data.sort()
+    upperHalf = [x for x in data if x > median]
+    q3 = Median(upperHalf)
+    return q3
 
 def calculate( data, ithAttribute):
     """
@@ -88,7 +111,6 @@ def calculate( data, ithAttribute):
     """
 
     noOfObjects , minValue , maxValue , mean , standardDeviation , q1 , median , q3 ,iqr = [0,"inf","-inf",0,0,0,0,0,0]
-    #TODO : Write code to assign the values to the respective variables.
 
     # Split each line of the data delimited by a comma into a list
     data = splitData(data)
@@ -100,14 +122,24 @@ def calculate( data, ithAttribute):
     # Source: https://stackoverflow.com/questions/3371269/call-int-function-on-every-list-element-in-python
     data = [float(x) for x in data]
 
+    # The number of objects/lines in the data set
     noOfObjects = len(data)
+    # The minimum value of the ith attribute of all the objects
     minValue = min(data)
+    # The maximum value of the ith attribute of all the objects
     maxValue = max(data)
+    # The average value of the ith attribute of all the objects
     mean = Mean(data)
+    # The median value of the ith attribute of all the objects
     median = Median(data)
+    # The standard deviation value of the ith attribute of all the objects
     standardDeviation = StandardDeviation(data, mean)
-
-
+    # The 25th percentile of the ith attribute of all the objects
+    q1 = Q1(data, median)
+    # The 75th percentile of the ith attribute of all the objects
+    q3 = Q3(data, median)
+    # The interquartile range of the ith attribute of all the objects
+    iqr = q3 - q1
 
     return noOfObjects , minValue , maxValue, mean, standardDeviation , q1 , median , q3 , iqr
 
