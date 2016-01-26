@@ -3,6 +3,7 @@
 import argparse
 import sys
 import numpy
+import math
 
 class dataSet:
     """
@@ -25,7 +26,7 @@ def splitData(data):
         splitData.append(line)
     return splitData
 
-def findithData(data, ithAttribute):
+def findIthData(data, ithAttribute):
     '''
     Go through the data and return a list 
     of the ith attribute for each line of the data
@@ -45,19 +46,35 @@ def Mean(data):
 def Median(data):
     '''
     Find the medain value in the data
-    
+
     Source: https://stackoverflow.com/questions/24101524/finding-median-of-list-in-python
+    Source: https://en.wikipedia.org/wiki/Median
     '''
     data.sort()
-    # Uneven list
+    # Uneven length list
     if len(data) % 2 == 1:
         middleNumber = (len(data)-1)/2
         return data[middleNumber]
-    # Even list
+    # Even length list
     else:
         firstMiddleNumber = data[len(data)/2]
         secondMiddleNumber = data[len(data)/2 - 1]
         return (firstMiddleNumber + secondMiddleNumber)/2
+
+def StandardDeviation(data, mean):
+    '''
+
+
+    Source: https://en.wikipedia.org/wiki/Standard_deviation
+    '''
+    deviations = []
+    for x in data:
+        x = (x - mean)**2
+        print x
+        deviations.append(x)
+    variance = sum(deviations)/len(deviations)
+    return math.sqrt(variance)
+
 
 
 def calculate( data, ithAttribute):
@@ -77,7 +94,7 @@ def calculate( data, ithAttribute):
     data = splitData(data)
 
     # set the data to a list of the the ith attribute of the data
-    data = findithData(data,ithAttribute)
+    data = findIthData(data,ithAttribute)
 
     # Convert each element in the data from a string to a float
     # Source: https://stackoverflow.com/questions/3371269/call-int-function-on-every-list-element-in-python
@@ -88,6 +105,7 @@ def calculate( data, ithAttribute):
     maxValue = max(data)
     mean = Mean(data)
     median = Median(data)
+    standardDeviation = StandardDeviation(data, mean)
 
 
 
