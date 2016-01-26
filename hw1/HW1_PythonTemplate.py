@@ -2,6 +2,7 @@
 
 import argparse
 import sys
+import numpy
 
 class dataSet:
     """
@@ -35,11 +36,29 @@ def findithData(data, ithAttribute):
         ithData.append(line)
     return ithData
 
-def avg(data):
+def Mean(data):
     '''
     Return the average/mean of a list of floats
     '''
     return (sum(data)/len(data))
+
+def Median(data):
+    '''
+    Find the medain value in the data
+    
+    Source: https://stackoverflow.com/questions/24101524/finding-median-of-list-in-python
+    '''
+    data.sort()
+    # Uneven list
+    if len(data) % 2 == 1:
+        middleNumber = (len(data)-1)/2
+        return data[middleNumber]
+    # Even list
+    else:
+        firstMiddleNumber = data[len(data)/2]
+        secondMiddleNumber = data[len(data)/2 - 1]
+        return (firstMiddleNumber + secondMiddleNumber)/2
+
 
 def calculate( data, ithAttribute):
     """
@@ -67,8 +86,8 @@ def calculate( data, ithAttribute):
     noOfObjects = len(data)
     minValue = min(data)
     maxValue = max(data)
-    mean = avg(data)
-
+    mean = Mean(data)
+    median = Median(data)
 
 
 
