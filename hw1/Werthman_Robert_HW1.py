@@ -1,8 +1,12 @@
+'''
+Robert Werthman
+CSCI 5502
+Homework 1
+'''
+
 #Assignment based on MAGIC Gamma Telescope Data Set ( http://archive.ics.uci.edu/ml/datasets/MAGIC+Gamma+Telescope )
 
 import argparse
-import sys
-import numpy
 import math
 
 class dataSet:
