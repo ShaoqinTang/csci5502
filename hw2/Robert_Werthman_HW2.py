@@ -5,6 +5,28 @@
 #If it follows a different format, avoid it or remove it.
 
 import argparse
+import csv
+
+def ReadInAttributeFromCSV(fileName, attribute):
+	'''
+	Input:
+		fileName:
+		attribute:
+	Output:
+		a list of the values for the attribute given as input
+
+	Source: https://pymotw.com/2/csv/
+	Source: https://docs.python.org/2/library/csv.html
+	'''
+	attributeValues = []
+	f = open(fileName, 'r')
+	reader = csv.DictReader(f)
+	for row in reader:
+		value = float(row[attribute])
+		attributeValues.append(value)
+	f.close()
+	return attributeValues
+
 
 def normalization ( fileName , attribute, normalizationType ):
     '''
