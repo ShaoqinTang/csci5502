@@ -9,6 +9,16 @@ fileContent = [
 		("2016/01/27","93.4200","133059000.0000","96.0400","96.6289","93.3400")
 ]
 
+def ReadInAttributeFromCSVTest(filename):
+	l = Robert_Werthman_HW2.ReadInAttributeFromCSV(filename, 'close')
+	test("ReadInAttributeFromCSVTest1",(l == [float("94.0900"),float("93.4200")]))
+
+	l = Robert_Werthman_HW2.ReadInAttributeFromCSV(filename, 'volume')
+	test("ReadInAttributeFromCSVTest2",(l == [float("55622370.0000"),float("133059000.0000")]))
+
+	l = Robert_Werthman_HW2.ReadInAttributeFromCSV(filename, 'date')
+	test("ReadInAttributeFromCSVTest3",(l == 1))
+
 def CreateTestFile():
 	'''
 	Source: https://pymotw.com/2/csv/
@@ -20,14 +30,6 @@ def CreateTestFile():
 
 def RemoveTestFile(filePath):
 	os.remove(filePath)
-
-def ReadInAttributeFromCSVTest(filename):
-	l = Robert_Werthman_HW2.ReadInAttributeFromCSV(filename, 'close')
-	test("ReadInAttributeFromCSVTest1",(l == [float("94.0900"),float("93.4200")]))
-
-	l = Robert_Werthman_HW2.ReadInAttributeFromCSV(filename, 'volume')
-	test("ReadInAttributeFromCSVTest2",(l == [float("55622370.0000"),float("133059000.0000")]))
-
 
 def test(testName, bool):
 	if bool:

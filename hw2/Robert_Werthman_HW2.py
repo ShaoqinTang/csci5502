@@ -18,6 +18,9 @@ def ReadInAttributeFromCSV(fileName, attribute):
 	Source: https://pymotw.com/2/csv/
 	Source: https://docs.python.org/2/library/csv.html
 	'''
+	if attribute not in ['open','high','low','close', 'last','volume']:
+		return 1
+
 	attributeValues = []
 	f = open(fileName, 'r')
 	reader = csv.DictReader(f)
