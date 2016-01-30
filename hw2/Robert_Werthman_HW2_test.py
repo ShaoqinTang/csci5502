@@ -30,10 +30,13 @@ def Min_MaxTest(filename):
 
 def Z_ScoreTest(filename):
 	l = Robert_Werthman_HW2.ReadInAttributeFromCSV(filename, 'low')
-	#l = Robert_Werthman_HW2.Z_Score(l)
-	print Robert_Werthman_HW2.Mean(l)
-	print Robert_Werthman_HW2.StandardDeviation(l, Robert_Werthman_HW2.Mean(l))
-	#test("Z_ScoreTest1", (l == [(float(54000),float(0)),(float(73600),float(0)),(float(16000),float(0))]))
+	m = Robert_Werthman_HW2.Mean(l)
+	sd = Robert_Werthman_HW2.StandardDeviation(l, Robert_Werthman_HW2.Mean(l))
+	x = (float(1) - m)/sd
+	y = (float(2) - m)/sd
+	z = (float(3) - m)/sd
+	l = Robert_Werthman_HW2.Z_Score(l)
+	test("Z_ScoreTest1", (l == [(float(1),x),(float(2),y),(float(3),z)]))
 
 def ReadInAttributeFromCSVTest(filename):
 	l = Robert_Werthman_HW2.ReadInAttributeFromCSV(filename, 'close')
@@ -41,9 +44,6 @@ def ReadInAttributeFromCSVTest(filename):
 
 	l = Robert_Werthman_HW2.ReadInAttributeFromCSV(filename, 'volume')
 	test("ReadInAttributeFromCSVTest2",(l == [float("55622370.0000"),float("133059000.0000")]))
-
-	l = Robert_Werthman_HW2.ReadInAttributeFromCSV(filename, 'date')
-	test("ReadInAttributeFromCSVTest3",(l == 1))
 
 def CreateTestFile(filename, filecontent):
 	'''
@@ -73,7 +73,7 @@ def main():
 
 	RemoveTestFile('test1.csv')
 	RemoveTestFile('test2.csv')
-	RemoveTestFile('test3.csv')
+	#RemoveTestFile('test3.csv')
 
 if __name__ == "__main__":
 	main()
