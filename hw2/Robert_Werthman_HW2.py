@@ -6,6 +6,7 @@
 
 import argparse
 import csv
+import math
 
 def ReadInAttributeFromCSV(fileName, attribute):
 	'''
@@ -30,6 +31,52 @@ def ReadInAttributeFromCSV(fileName, attribute):
 	f.close()
 	return attributeValues
 
+def Mean(data):
+    '''
+    Input:
+        data:
+
+    Output:
+        Return the average/mean of a list of floats
+    '''
+    return (sum(data)/len(data))
+
+def StandardDeviation(data, mean):
+    '''
+    Input:
+        data:
+        mean:
+    Output:
+
+
+    Computes the standard deviation of the data with the
+    mean of that data
+
+    Source: https://en.wikipedia.org/wiki/Standard_deviation
+    '''
+    deviations = []
+    for x in data:
+        x = (x - mean)**2
+        deviations.append(x)
+    variance = sum(deviations)/len(deviations)
+    return math.sqrt(variance)
+
+
+def Min_Max(values):
+    '''
+    Input:
+        values:
+    '''
+    originalAndNormalizedValues = []
+    minValue = min(values)
+    maxValue = max(values)
+    for value in values:
+        normalizedValue = (value - minValue)/(maxValue - minValue)
+        originalAndNormalizedValues.append((value,normalizedValue))
+    return originalAndNormalizedValues
+
+def Z_Score(values):
+    pass
 
 def normalization ( fileName , attribute, normalizationType ):
     '''
