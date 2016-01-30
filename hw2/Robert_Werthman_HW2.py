@@ -1,3 +1,9 @@
+'''
+Robert Werthman
+CSCI 5502
+Homework 2
+'''
+
 #Assignment based on http://www.nasdaq.com/quotes/
 #Feel free to use any libraries. 
 #Make sure that the output format is perfect as mentioned in the problem.
@@ -7,7 +13,6 @@
 import argparse
 import csv
 import math
-import sys
 
 def ReadInAttributeFromCSV(fileName, attribute):
     '''
@@ -66,7 +71,7 @@ def StandardDeviation(data, mean):
         data: list of floating point values
         mean: average/mean of the list of floating point values
     Output:
-        list of the standard deviation for each floating point value in the list
+        Returns the standard deviation of all the floating point values in the list
 
     Source: https://en.wikipedia.org/wiki/Standard_deviation
     '''
@@ -129,9 +134,6 @@ def normalization ( fileName , attribute, normalizationType ):
         values = Z_Score(values)
     elif normalizationType == 'min_max':
         values = Min_Max(values)
-    else:
-        print 'Normalization type not supported.'
-        sys.exit(1)
 
     for value in values:
         print '{0}\t{1}'.format(value[0],value[1])
@@ -147,7 +149,23 @@ def correlation ( attribute1 , fileName1 , attribute2, fileName2 ):
     Output:
         Print the correlation coefficient 
     '''
-    #TODO: Write code given the Input / Output Paramters.
+    correlationCoefficient = 0.0
+    A = ReadInAttributeFromCSV(fileName1, attribute1)
+    B = ReadInAttributeFromCSV(fileName2, attribute2)
+    n = len(A)
+    AMean = Mean(A)
+    BMean = Mean(B)
+    AStandardDeviation = StandardDeviation(A, AMean)
+    BStandardDeviation = StandardDeviation(B, BMean)
+
+    for ai, bi in  zip(A,B):
+        correlationCoefficient += (ai - AMean)*(bi - BMean)
+
+    try:
+        correlationCoefficient = correlationCoefficient/(n*AStandardDeviation*BStandardDeviation)
+        print correlationCoefficient
+    except ZeroDivisionError:
+        print 'Cannot calculate the correlation coefficient because one of the standard deviations is zero.'
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Data Mining HW2')
