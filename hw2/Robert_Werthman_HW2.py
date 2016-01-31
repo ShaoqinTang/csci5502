@@ -120,7 +120,7 @@ def Z_Score(values):
         originalAndNormalizedValues.append((value,normalizedValue))
     return originalAndNormalizedValues
 
-def normalization ( fileName , attribute, normalizationType ):
+def normalization ( fileName , normalizationType , attribute):
     '''
     Input Parameters:
         fileName: The comma seperated file that must be considered for the normalization
@@ -193,7 +193,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     if ( args.n and args.a1 ):
-        normalization( args.f1 , args.a1 , args.n)
+        normalization( args.f1 , args.n , args.a1)
     elif ( args.f2 and args.a1 and args.a2):
         correlation ( args.a1 , args.f1 , args.a2 , args.f2 )
     else:

@@ -73,7 +73,7 @@ def main():
 
 	RemoveTestFile('test1.csv')
 	RemoveTestFile('test2.csv')
-	#RemoveTestFile('test3.csv')
+	RemoveTestFile('test3.csv')
 
 if __name__ == "__main__":
 	main()
