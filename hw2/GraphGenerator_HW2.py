@@ -49,15 +49,31 @@ def TemporalChange(filename):
 	# rotate and align the tick labels so they look better
 	fig.autofmt_xdate()
 
-	plt.title('Low and High Attributes vs. Date')
+	plt.title('Temporal Graph of Low and High Attributes vs. Date')
 	plt.xlabel('Date')
 	plt.ylabel('Attribute Value')
 	plt.legend(['Low Attribute', 'High Attribute'], loc=9, numpoints=1)
 	plt.savefig(pdf,format='pdf')
 	plt.close()
 
+def BoxPlot(filename):
+	open_attr = ReadInAttributeFromCSV(filename, 'open')
+	close_attr = ReadInAttributeFromCSV(filename, 'close')
+
+	fig = plt.figure()
+	plt.boxplot([open_attr,close_attr])
+	plt.title('Boxplot for the Open and Close Attributes')
+	plt.xticks([1, 2], ['Open Attribute', 'Close Attribute'])
+	plt.ylabel('Attribute Value')
+	plt.xlabel('Attribute')
+	plt.savefig(pdf,format='pdf')
+
+def Histogram(filename):
+	pass
+
 def main():
 	TemporalChange('HD.csv')
+	BoxPlot('HD.csv')
 	pdf.close()
 
 
