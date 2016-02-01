@@ -28,8 +28,6 @@ def ReadInAttributeFromCSV(fileName, attribute):
     Source: https://docs.python.org/2/library/csv.html
     Source: https://stackoverflow.com/questions/2184955/test-if-a-variable-is-a-list-or-tuple
     '''
-    if attribute == 'close/last':
-        attribute = attribute.split('/')
 
     attributeValues = []
     f = open(fileName, 'r')
@@ -37,18 +35,9 @@ def ReadInAttributeFromCSV(fileName, attribute):
     # as keys and then the rest of the lines of each column as values for those keys
     reader = csv.DictReader(f)
     for row in reader:
-        # Handle the case where the attribute value is close/last
-        if type(attribute) is list:
-            if attribute[0] in row:
-                value = float(row[attribute[0]])
-                attributeValues.append(value)
-            elif attribute[1] in row:
-                value = float(row[attribute[1]])
-                attributeValues.append(value)
-        else:
-            if attribute in row:
-                value = float(row[attribute])
-                attributeValues.append(value)
+        if attribute in row:
+            value = float(row[attribute])
+            attributeValues.append(value)
     f.close()
     return attributeValues
 
@@ -181,11 +170,11 @@ if __name__ == "__main__":
                             required=False)
     parser.add_argument("-a1", type=str, 
                             help="Type of Attribute for filename1. Select either open or high or low or close/last or volume",
-                            choices=['open','high','low','close/last','volume'],
+                            choices=['open','high','low','close','volume'],
                             required=False)
     parser.add_argument("-a2", type=str, 
                             help="Type of Attribute for filename2. Select either open or high or low or close/last or volume",
-                            choices=['open','high','low','close/last','volume'],
+                            choices=['open','high','low','close','volume'],
                             required=False)
 
 
