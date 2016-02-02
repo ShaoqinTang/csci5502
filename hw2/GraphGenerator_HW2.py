@@ -76,11 +76,45 @@ def Histogram(filename):
 	plt.ylabel('Frequency')
 	plt.xlabel('Volume')
 	plt.savefig(pdf,format='pdf')
+	plt.close()
+
+def SubPlotMatrix(filename):
+	volume = ReadInAttributeFromCSV(filename, 'volume')
+	open_attr = ReadInAttributeFromCSV(filename, 'open')
+	close_attr = ReadInAttributeFromCSV(filename, 'close')
+	low = ReadInAttributeFromCSV(filename, 'low')
+	high = ReadInAttributeFromCSV(filename, 'high')
+	dates = ReadInAttributeFromCSV(filename, 'date')
+
+	fig,axs=plt.subplots(2,2)
+	# rotate and align the tick labels so they look better
+	fig.autofmt_xdate()
+	fig.subplots_adjust(hspace=.5,wspace=.3)
+	fig.suptitle('Plot Matrix of the Open, Low, High, and Close Attributes')
+
+	ax = axs[0,0]
+	ax.plot(dates,open_attr)
+	ax.set_ylabel('Open')
+
+	ax = axs[0,1]
+	ax.plot(dates,close_attr)
+	ax.set_ylabel('Close')
+
+	ax = axs[1,0]
+	ax.plot(dates,low)
+	ax.set_ylabel('Low')
+
+	ax = axs[1,1]
+	ax.plot(dates,high)
+	ax.set_ylabel('High')
+	
+	plt.savefig(pdf,format='pdf')
 
 def main():
 	TemporalChange('HD.csv')
 	BoxPlot('HD.csv')
 	Histogram('HD.csv')
+	SubPlotMatrix('HD.csv')
 	pdf.close()
 
 
