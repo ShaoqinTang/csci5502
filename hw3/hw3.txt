@@ -1,0 +1,76 @@
+1.
+a) lift(A,B) = P(A union B)/(P(A)*P(B))
+   P({ski}) = 2500/4000 = .625
+   P({football}) = 2000/4000 = .5
+   P({ski,football}) = 1500/4000 = .375
+   lift(ski,football) = P({ski,football})/(P({ski})*P({football})) = .375/(.625*.5) = 1.2
+
+   Since the value is greater than 1, ski and football are positively correlated.
+
+b) min_sup = 25% 
+   min_conf = 50%
+   support(A => B) = P(A union B)
+   	support(ski => football) = P(A union B) = 1500/4000 = .375*100 = 37.5% > min_sup = 25%
+   confidence(A => B) = P(B|A) = support(A union B)/support(A)
+   	confidence(ski => football) = 1500/2500 = .6*100 = 60% > min_conf = 50%
+
+   In this case both support and confidence of the association rule ski => football exceed the 
+   support and confidence thresholds so the rule is strong.
+
+2.
+a) {E,G,S,F,Z,D,I,N,O,T,B} = 11 unique items
+   How many possible combinations of 1-11 items can we have:
+   	C(11,1) + C(11,2) + C(11,3) + C(11,4) + C(11,5) + C(11,6) + C(11,7) + C(11,8) + C(11,9) + C(11,10) + C(11,11) 
+   	= 11 + 55 + 165 + 330 + 462 + 462 + 330 + 165 + 55 + 11 + 1 = 2047 possible frequent itemsets
+
+b) Apriori Algorithm
+   Step 1: Scan the data set for a count of each, individual item creating candidate set 1
+   	C1 = {{E,3},{G,3},{S,1},{F,1},{Z,3},{B,4},{D,1},{I,3},{N,4},{T,1}}
+   Step 2: Prune the items that are below the minimum support (support count = 5*.6 = 3) giving the set of frequent 1-itemsets
+   	L1 = {{E,3},{G,3},{Z,3},{B,4},{I,3},{N,4}}
+   Step 3: Join L1 with itself to find the set of 2-itemsets creating candidate set 2
+   	C2 = {{E,G},{E,Z},{E,B},{E,I},{E,N},{G,Z},{G,B},{G,I},{G,N},{Z,B},{Z,I},{Z,N},{B,I},{B,N},{I,N}}
+   Step 4: Scan the data set for the count of each 2-itemset
+   	C2 = {{E,G,1},{E,Z,1},{E,B,2},{E,I,2},{E,N,2},{G,Z,3},{G,B,2},{G,I,1},{G,N,2},{Z,B,2},{Z,I,1},{Z,N,2},{B,I,3},{B,N,4},{I,N,3}}
+   Step 5: Prune the items that are below the minimum support count of 3 giving the set of frequent 2-itemsets
+   	L2 = {{G,Z,3},{B,I,3},{B,N,4},{I,N,3}}
+   Step 6: Join L2 with itself to find the set of 3-itemsets creating candidate set 3
+   	C3 = {{G,Z,B},{G,Z,I},{G,Z,N},{B,I,G},{B,I,Z},{B,I,N},{B,N,Z},{B,N,G},{I,N,G}}
+   Step 7: Scan the data set for the count of each 3-itemset
+   	C3 = {{G,Z,B,2},{G,Z,I,1},{G,Z,N,2},{B,I,G,1},{B,I,Z,1},{B,I,N,3},{B,N,Z,2},{B,N,G,2},{I,N,G,1}}
+   Step 8: Prune the items that are below the minimum support count of 3 giving the set of frequent 3-itemsets
+   	L3 = {{B,I,N,3}}
+   Step 9: Join L3 with itself to find the set of 4-itemsets creating candidate set 4
+   	C4 = empty set
+
+c) The database was scanned 3 times.  The total number of candidates, |C1| + |C2| + |C3|, is 34.
+
+d) n = total number of transactions
+   b = number of items in each transaction
+   m = number of k-itemset candidates
+
+   First approach - Runtime (computational complexity) of this approach is O(n*k*m*b)
+   --------------
+   for transaction in transactions:              -----> happens n times
+    for itemset in itemsets:                     -----> happens k times
+     for candidate in itemsets:                  -----> happens m times
+      check if candidate occured in transaction  -----> could take b time to compare all items in transaction to candidate of size b
+
+   Second approach - Runtime (computational complexity) of this approach is O(n*(b!/(b-k)!*k!))
+   ---------------
+   for transaction in transactions:                                 -----> happens n times
+    enumerate all the possible k-itemsets of transaction of size b  -----> happens C(b,k) times
+    for itemset in itemsets:
+
+3.
+a) Minimum support count = .6*4 = 2
+   largest k = 3 for the 3 items in the rule, 3-itemset = {{bread,milk,pie},{milk,bread,cheese},{milk,cheese,cereal},{milk,bread,cherry},{cereal,milk,bread}}
+   Strong association rules:
+
+b) Minimum support count = .6*4 = 2
+   largest k = 3 for the 3 items in the rule, 3-itemset = {{Wonder-Bread,Diaryland-Milk,Sweet-Pie}}
+
+
+
+
+
