@@ -56,19 +56,43 @@ d) n = total number of transactions
      for candidate in itemsets:                  -----> happens m times
       check if candidate occured in transaction  -----> could take b time to compare all items in transaction to candidate of size b
 
-   Second approach - Runtime (computational complexity) of this approach is O(n*(b!/(b-k)!*k!))
+   Second approach - Runtime (computational complexity) of this approach is O(n*((b!/(b-k)!*k!)+(k*m*m)))
    ---------------
    for transaction in transactions:                                 -----> happens n times
     enumerate all the possible k-itemsets of transaction of size b  -----> happens C(b,k) times
-    for itemset in itemsets:
+    for itemset in both original itemset and enumerated itemset:    -----> happens k times
+     for candidate in original itemset:                             -----> happens m times
+      check if candidate is in enumerated itemset                   -----> could happend worst case m times looking at all candidates
+
+I'm not sure which one is better than the other: 
+   1. O(n*k*m*b)
+   2. O(n*((b!/(b-k)!*k!)+(k*m*m)))
+I believe the second approach will have a lower computational complexity if the size of k is larger.  This means there would be higher number itemsets.
+I believe the first approach will have a lower computational complexity if any of the variables are smaller.  
 
 3.
 a) Minimum support count = .6*4 = 2
-   largest k = 3 for the 3 items in the rule, 3-itemset = {{bread,milk,pie},{milk,bread,cheese},{milk,cheese,cereal},{milk,bread,cherry},{cereal,milk,bread}}
-   Strong association rules:
+   Largest k = 3 for the 3 items in the rule.  3-itemset = {{Milk,Cheese,Bread}}
+   The rule reads, "For all transactions, if transaction X contains item 1 and contains item 2 then transaction X contains item 3"
+
+   Association rules:
+   Support is when left hand side and right hand side occur together divided by the number of transactions.
+   Confidence is when the left hand side and right hand side occur together divided by the number of times the left hand side occurs together.
+
+   Milk^Cheese => Bread [support = 3/4 = .75,confidence = 3/3 = 1]
+   Milk^Bread => Cheese [support = 3/4 = .75,confidence = 3/4 = .75]
+   Cheese^Bread => Milk [support = 3/4 = .75,confidence = 3/3 = 1]
+
+   Strong Association rules:
+   min_support = .6, min_confidence = .8
+
+   Milk^Cheese => Bread [support = 3/4 = .75,confidence = 3/3 = 1]
+   Cheese^Bread => Milk [support = 3/4 = .75,confidence = 3/3 = 1]
+
 
 b) Minimum support count = .6*4 = 2
    largest k = 3 for the 3 items in the rule, 3-itemset = {{Wonder-Bread,Diaryland-Milk,Sweet-Pie}}
+   The rule reads, "For all customers, if customer X buys item 1 and buys item 2 then customer X buys item 3"
 
 
 
