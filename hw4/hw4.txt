@@ -90,6 +90,9 @@
 
        P(X|seat belt = yes)*P(sb=yes) = .029*.667 = .019
        P(X|seat belt = no)*P(sb=no) = .063*.334 = .021
+
+       Naive Bayes would choose the highest probability of a person with the given attributes wearing a seatbelt or not.
+       In this case, the person probably did not wear a seatbelt.
         
        
        
