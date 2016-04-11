@@ -46,5 +46,5 @@ Step 3: Calculate the new centroid of each cluster for the next round
   
 
 4.
-A python data mining tool I have used frequently in this class is matplotlib.  I've used it to create graphs like histograms and scatter plots to see patterns and correlations with data.  The strengths are that the graphs are easy to generate and are very customizable.  You can have legends and titles and use different colors and shapes for the points.  The limitations are you can't graph location data on a geographic map.   
+A python data mining tool I have used frequently in this class is matplotlib.  I've used it to create graphs like histograms and scatter plots to see patterns and correlations with data.  The strengths are that the graphs are easy to generate and are very customizable.  You can have legends and titles and use different colors and shapes for the points.  The limitations are you can't graph location data on a geographic map.  Changing the scales of the axes can be complicated and the graphs aren't really aesthetically pleasing. 
 
