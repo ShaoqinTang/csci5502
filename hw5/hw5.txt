@@ -1,0 +1,50 @@
+1.
+  (a) Naive Bayes.  Naive Bayes supports incremental data by being able to update probabilities as more data comes into the classifier.
+                    Some probabilites do need to be recomputed but not all of them which is unlike the decision tree where the whole tree has to be recomputed when new data is introduced to the classifier.   
+  (b) Rule-based.  Rule-based classification decisions are easy to interpret because you can read the rule and see what the outcome will be.
+                   If these conditions are met then this is the conclusion; the rules are straight forward.  This is unlike Naive Bayes where you need to do a lot of math to figure out how something will be classified and what conclusion will be drawn.
+  (c) Neural Networks.  Neural Networks are hard to interpret because classification decisions are based on learned weights and the network 
+                        topology.  Compared to rule-based classification neural network dicisions are much more difficult to interpret.  Neural networks also have a lot of more variables when compare to naive bayes that are part of the training process.
+
+2.
+Step 1: Calculate euclidean distance for each point to each centroid
+  Euclidean disance d(p,q) = sqrt((p1-q1)^2 + (p2-q2)^2)
+  d(A1,A2) = 5, d(B1,A2) = 4.2 d(C1,A2) = 3.16
+  d(A1,A3) = 8.5, d(B1,A3) = 5, d(C1,A3) = 7.28
+  d(A1,B2) = 7.1, d(B1,B2) = 3.6, d(C1,B2) = 6.7
+  d(A1,B3) = 7.2, d(B1,B3) = 4.1, d(C1,B3) = 5.3
+  d(A1,C2) = 2.2, d(B1,C2) = 1.4, d(C1,C2) = 7.6
+Step 2: Add all points to the cluster with lowest value from the point to cluster centroid
+  R1: 
+    Cluster 1 A1(2, 10): A1
+    Cluster 2 B1(5, 8): B1, A3, B2, B3, C2
+    Cluster 3 C1(1, 2): C1, A2
+Step 3: Calculate the new centroid of each cluster for the next round
+  R2:
+    Cluster 1 Centroid: (x,y) = (2,10)
+    Cluster 2 Centroid: x = (5+8+7+6+4)/5 = 6, y = (8+4+5+4+9)/5 = 6, (x,y) = (6,6)
+    Cluster 3 Centroid: x = (1+2)/2 = 1.5, y = (2+5)/2 = 3.5, (x,y) = (1.5,3.5)
+
+3.
+  A global outlier is a data object that deviates significantly from the rest of data set.  To detect a global outlier you have to define a measurement of deviation for the application.
+  Example application of the age of stuydents on a college campus taking a survey with objects that have an age attribute.  A global outlier is defined as having a deviation of + or - 20 years for the age attribute.
+    Object 1: Age: 25, Object 2: Age: 28, Object 3: Age: 22, Object 4: Age: 78
+  In this example Object 4 would be a global outlier because it surpasses the deviation we defined and the age significantly higher than the rest of the data set.  You also would not expect a student to be 78 years old.
+
+  A contextual outlier is a data object that deviates significantly with respect to a specific context of the object.  To detect contextual outliers a context -- date, time, location, etc. -- has to be defined as part of how we should view the data.
+  Example application of mortality rates in a country in a certain year with objects the have the attributes date, location, mortality rate per year.
+  Object 1: date: 1942 location: Germany mr: 100
+  Object 2: date: 2001, location: Germany mr: 7 
+  Object 3: date: 2016, location: Germany mr: 5
+  Object 4: date: 1918, location: Germany mr: 98
+
+  In this example Object 1 and 4 would be contextual outliers if we defined the context to be the mortality rate per year from 2000 to 2016.  They are not global outliers because the data set is supposed to have the mortality rates of different countries with different years and objects 1 and 4 don't deviate from that.
+
+  A collective outlier is subset of data objects that as a whole deviate significantly from the entire data set.  In order to detect collective ouliers you need to consider the relationship among the data objets such as distance or similarity measures.
+  For example, let's say a web service is being run on server and the server receives on average 5 requests from an IP address.  It may every once in a while receive 100 requests from an IP address.  This is considered normal because maybe the IP address belongs to a school that is using NAT to map an single IP address to multiple users.  But if several thousand IP addresses make hundreds of requests around the same time those IP address could be a DDOS attack and as whole would be considered a collective outlier.  
+
+  
+
+4.
+A python data mining tool I have used frequently in this class is matplotlib.  I've used it to create graphs like histograms and scatter plots to see patterns and correlations with data.  The strengths are that the graphs are easy to generate and are very customizable.  You can have legends and titles and use different colors and shapes for the points.  The limitations are you can't graph location data on a geographic map.   
+
