@@ -1,0 +1,55 @@
+Instruction to install and setup dataset:
+=========================================
+
+- Download and extract yelp data set:
+https://www.yelp.com/dataset_challenge
+
+- Download and install MongoDB server:
+https://www.mongodb.org/downloads#production 
+
+- Start the mongodb server
+
+ C:\Program Files\MongoDB\Server\3.2\bin\mongod.exe - This will start the server locally. On some platforms, you might have to pass —-dbpath <path>.
+
+- Open another command line window and run the mongo shell (this connects to your local mongo server):
+
+C:\Program Files\MongoDB\Server\3.2\bin\mongo.exe
+
+Now, create ‘yelpmining' database and collections:
+
+MongoDB shell version: 3.2.3
+connecting to: test
+> use yelpmining
+switched to db yelpmining
+> db.createCollection("business")
+{ "ok" : 1 }
+> db.createCollection("checkin")
+{ "ok" : 1 }
+> db.createCollection("review")
+{ "ok" : 1 }
+> db.createCollection("tip")
+{ "ok" : 1 }
+> db.createCollection("user")
+{ "ok" : 1 }
+
+- Next, import json data:
+
+mongoimport --db yelpmining --collection business yelp_academic_dataset_business.json 
+
+mongoimport --db yelpmining --collection review yelp_academic_dataset_review.json 
+
+mongoimport --db yelpmining --collection checkin yelp_academic_dataset_checkin.json 
+
+mongoimport --db yelpmining --collection tip yelp_academic_dataset_tip.json 
+
+mongoimport --db yelpmining --collection user yelp_academic_dataset_user.json
+
+- To verify data was imported correctly:
+
+> use yelpmining
+switched to db yelpmining
+> db.business.find()
+{ "_id" : ObjectId("56d3dcec08135fca54cabc15"), "business_id" : "UsFtqoBl7naz8AV
+UBZMjQQ", "full_address" : "202 McClure St\nDravosburg, PA 15034", "hours" : {
+}, "open" : true, "categories" : [ "Nightlife" ], "city" : "Dravosburg", "review
+.....

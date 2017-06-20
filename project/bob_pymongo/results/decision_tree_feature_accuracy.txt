@@ -1,0 +1,55 @@
+['fans']	0.96612532362899
+['fans', 'review_count']	0.9618344105878732
+['fans', 'review_count', 'average_stars']	0.9505911321130484
+['fans', 'review_count', 'average_stars', 'friends']	0.9508627088878026
+['fans', 'review_count', 'average_stars', 'friends', 'cool_votes']	0.9512791266090924
+['fans', 'review_count', 'average_stars', 'friends', 'cool_votes', 'useful_votes']	0.9505187116397805
+['fans', 'review_count', 'average_stars', 'friends', 'cool_votes', 'useful_votes', 'funny_votes']	0.9505549218764144
+
+['review_count']	0.9668676334799848
+['review_count', 'fans']	0.9618344105878732
+['review_count', 'fans', 'average_stars']	0.9505911321130484
+['review_count', 'fans', 'average_stars', 'friends']	0.9508627088878026
+['review_count', 'fans', 'average_stars', 'friends', 'cool_votes']	0.9512791266090924
+['review_count', 'fans', 'average_stars', 'friends', 'cool_votes', 'useful_votes']	0.9505187116397805
+['review_count', 'fans', 'average_stars', 'friends', 'cool_votes', 'useful_votes', 'funny_votes']	0.9505549218764144
+
+['average_stars']	0.9432404540763674
+['average_stars', 'review_count']	0.952437854181377
+['average_stars', 'review_count', 'fans']	0.9505911321130484
+['average_stars', 'review_count', 'fans', 'friends']	0.9508627088878026
+['average_stars', 'review_count', 'fans', 'friends', 'cool_votes']	0.9512791266090924
+['average_stars', 'review_count', 'fans', 'friends', 'cool_votes', 'useful_votes']	0.9505187116397805
+['average_stars', 'review_count', 'fans', 'friends', 'cool_votes', 'useful_votes', 'funny_votes']	0.9505549218764144
+
+['friends']	0.9492694584759112
+['friends', 'review_count']	0.9537052124635634
+['friends', 'review_count', 'fans']	0.9529629026125686
+['friends', 'review_count', 'fans', 'average_stars']	0.9508627088878026
+['friends', 'review_count', 'fans', 'average_stars', 'cool_votes']	0.9512791266090924
+['friends', 'review_count', 'fans', 'average_stars', 'cool_votes', 'useful_votes']	0.9505187116397805
+['friends', 'review_count', 'fans', 'average_stars', 'cool_votes', 'useful_votes', 'funny_votes']	0.9505549218764144
+
+['cool_votes']	0.9679539405790016
+['cool_votes', 'review_count']	0.9500660836818569
+['cool_votes', 'review_count', 'fans']	0.9503919758115619
+['cool_votes', 'review_count', 'fans', 'average_stars']	0.9510799703076059
+['cool_votes', 'review_count', 'fans', 'average_stars', 'friends']	0.9512791266090924
+['cool_votes', 'review_count', 'fans', 'average_stars', 'friends', 'useful_votes']	0.9505187116397805
+['cool_votes', 'review_count', 'fans', 'average_stars', 'friends', 'useful_votes', 'funny_votes']	0.9505549218764144
+
+['useful_votes']	0.9655821700794814
+['useful_votes', 'review_count']	0.9498126120254196
+['useful_votes', 'review_count', 'fans']	0.9497220864338348
+['useful_votes', 'review_count', 'fans', 'average_stars']	0.950373870693245
+['useful_votes', 'review_count', 'fans', 'average_stars', 'friends']	0.9505368167580975
+['useful_votes', 'review_count', 'fans', 'average_stars', 'friends', 'cool_votes']	0.9505187116397805
+['useful_votes', 'review_count', 'fans', 'average_stars', 'friends', 'cool_votes', 'funny_votes']	0.9505549218764144
+
+['funny_votes']	0.9633552405264968
+['funny_votes', 'review_count']	0.9473684210526315
+['funny_votes', 'review_count', 'fans']	0.9466080060833197
+['funny_votes', 'review_count', 'fans', 'average_stars']	0.9473684210526315
+['funny_votes', 'review_count', 'fans', 'average_stars', 'friends']	0.9474951568808502
+['funny_votes', 'review_count', 'fans', 'average_stars', 'friends', 'cool_votes']	0.9502109246283924
+['funny_votes', 'review_count', 'fans', 'average_stars', 'friends', 'cool_votes', 'useful_votes']	0.9505549218764144
